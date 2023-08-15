@@ -31,3 +31,16 @@ Utilizar o terminal de forma avançada:
 * [x] Transporte inseguro e macanismo de recuperação de senhas vulneráveis
 * [x] Métodos de descoberta automática de vulnerabilidades
 * [x] Métodos para proteção
+## Métodos Ágeis de A a Z: Curso Completo
+* [x] Gestão de projeto: do método tradicional ao ágil
+* [x] Manifesto ágil
+* [ ] Scrum
+* [ ] Método Kanban
+* [ ] Lean
+* [ ] Extreme Programming (XP)
+* [ ] Design Sprint Google
+* [ ] Modelo Spotify Squads
+* [ ] SMART
+* [ ] Trello
+* [ ] Asana
+* [ ] Ferramentas de projetos para usar em métodos ágeis
