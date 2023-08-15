@@ -6,25 +6,25 @@ Meu nome é Larissa Rayane Bezerra Nunes de Farias, tenho 24 anos, moro em Monte
 # Sprint 1
 ## Git e GitHub
 Do básico ao avançado: 
-* O que é Git e GitHub?
-* Git fundamental
-* Repósitório
-* Branches
-* Markdown
-* Compatilhamento e atualizações de repositórios
-* Análise e inspeção de repositórios
-* Exploração e entendendo o GitHub
+* [x] O que é Git e GitHub?
+* [x] Git fundamental
+* [x] Repósitório
+* [x] Branches
+* [x] Markdown
+* [x] Compatilhamento e atualizações de repositórios
+* [x] Análise e inspeção de repositórios
+* [x] Exploração e entendendo o GitHub
 ## Linux para Desenvolvedores 
 Utilizar o terminal de forma avançada:
-* Linux Fundamental
-* Gerenciamento de diretórios e arquivos
-* Gerenciamento dde pacotes/aplicativos
-* Filtro e buscas de arquivos e dirétorios
-* Editores de textos
-* Gerenciamento de usuários e grupos
-* Gerenciamento de permissões
-*  Gerenciamento básico de redes
-*  Compactação e descompactação de arquivos e diretórios
+* [x] Linux Fundamental
+* [x] Gerenciamento de diretórios e arquivos
+* [x] Gerenciamento dde pacotes/aplicativos
+* [x] Filtro e buscas de arquivos e dirétorios
+* [x] Editores de textos
+* [x] Gerenciamento de usuários e grupos
+* [x] Gerenciamento de permissões
+* [x] Gerenciamento básico de redes
+* [x] Compactação e descompactação de arquivos e diretórios
 ## Segurança em Aplicações WEB
 * [x] Princípios da segurança, testes de Vunerabilidades, ferramentas e documentação
 * [x] Testes de Vulnerabilidade e Injeções diversas
