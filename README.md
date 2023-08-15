@@ -27,7 +27,7 @@ Utilizar o terminal de forma avançada:
 *  Compactação e descompactação de arquivos e diretórios
 ## Segurança em Aplicações WEB
 * [x] Princípios da segurança, testes de Vunerabilidades, ferramentas e documentação
-* [ ] Testes de Vulnerabilidade e Injeções diversas
-* [ ] Transporte inseguro e macanismo de recuperação de senhas vulneráveis
-* [ ] Métodos de descoberta automática de vulnerabilidades
-* [ ] Métodos para proteção
+* [x] Testes de Vulnerabilidade e Injeções diversas
+* [x] Transporte inseguro e macanismo de recuperação de senhas vulneráveis
+* [x] Métodos de descoberta automática de vulnerabilidades
+* [x] Métodos para proteção
