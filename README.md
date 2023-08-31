@@ -44,3 +44,24 @@ Utilizar o terminal de forma avançada:
 * [ ] Trello
 * [ ] Asana
 * [ ] Ferramentas de projetos para usar em métodos ágeis
+
+# Sprint 2
+## SQL para Análise de Dados: Do básico ao avançado
+* [x] Comandos básicos
+* [x] Operadores
+* [x] Funções agregadas
+* [x] Joins
+* [x] Unions
+* [x] Subqueries
+* [x] Tratamento de dados
+* [x] Manipulação de tabelas
+## Big Data Fundamentos 3.0
+* [x] O que é Big Data
+* [x] Sistema de armazenamento de dados
+* [x] Armazenamento e Processamento paralelo
+* [x] Cloud computing
+* [x] MLOps e DataOps
+* [x] Dados como serviços
+* [x] ETL- Extração, Transformação e Carga de Dados
+* [x] Como iniciar um projeto em Big Data
+
