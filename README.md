@@ -65,3 +65,7 @@ Utilizar o terminal de forma avançada:
 * [x] ETL- Extração, Transformação e Carga de Dados
 * [x] Como iniciar um projeto em Big Data
 
+# Sprint 3
+ 💡 Link para Readme da Sprint
+https://github.com/Larissarbnf/CompassUol/commit/ffaa26a72807e349e38a6544fa8f46fc983476aa
+
