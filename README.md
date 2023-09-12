@@ -34,7 +34,7 @@ Utilizar o terminal de forma avançada:
 ## Métodos Ágeis de A a Z: Curso Completo
 * [x] Gestão de projeto: do método tradicional ao ágil
 * [x] Manifesto ágil
-* [ ] Scrum
+* [x] Scrum
 * [ ] Método Kanban
 * [ ] Lean
 * [ ] Extreme Programming (XP)
