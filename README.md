@@ -1,5 +1,5 @@
 # Apresentação:
-Meu nome é Larissa Rayane Bezerra Nunes de Farias, tenho 24 anos, moro em Monteiro na Paraíba, sou formada em Licenciatura Plena em Matemática pela Universidade Estadual da Paraíba (UEPB) e atualmente estou cursando o 2º período de Análise e Desenvolvimento de Sistemas pela Instituição Federal da Paraíba (IFPB). Durante a minha primeira graduação tive o contato com a linguagem de programação com Python, a partir desse contato tive interesse em estudar e me aprofundar no mundo da tecnologia. Entre os anos de 2018 à 2019 e 2020 à 2022, fui bolsista da Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (CAPES), no Programa Institucional de Bolsa de Iniciação à Docência (PIBID) e Residência Pedagógica. Atualmente estou me dedicando a área da tecnologia, onde estou sempre procurando me aperfeiçoar. Além do Estágio da CompassUol estou realizando outros cursos de Análise de Dados do Google + CIEE.
+Meu nome é Larissa Rayane Bezerra Nunes de Farias, tenho 24 anos, moro em Monteiro na Paraíba, sou formada em Licenciatura Plena em Matemática pela Universidade Estadual da Paraíba (UEPB) e atualmente estou cursando o 2º período de Análise e Desenvolvimento de Sistemas pela Instituição Federal da Paraíba (IFPB). Durante a minha primeira graduação tive o contato com a linguagem de programação com Python, a partir desse contato tive interesse em estudar e me aprofundar no mundo da tecnologia. Entre os anos de 2018 à 2019 e 2020 à 2022, fui bolsista da Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (CAPES), no Programa Institucional de Bolsa de Iniciação à Docência (PIBID) e Residência Pedagógica. Atualmente estou me dedicando a área da tecnologia, onde estou sempre procurando me aperfeiçoar.
 
 ## Aqui está a descrição de cada sprint que realizei:
 
@@ -64,8 +64,3 @@ Utilizar o terminal de forma avançada:
 * [x] Dados como serviços
 * [x] ETL- Extração, Transformação e Carga de Dados
 * [x] Como iniciar um projeto em Big Data
-
-# Sprint 3
- 💡 Link para Readme da Sprint
-https://github.com/Larissarbnf/CompassUol/commit/ffaa26a72807e349e38a6544fa8f46fc983476aa
-
