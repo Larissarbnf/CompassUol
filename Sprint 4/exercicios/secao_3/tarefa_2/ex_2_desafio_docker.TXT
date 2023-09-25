@@ -1,0 +1,8 @@
+É possível sim reutilizar containers no Docker. 
+Os containers Docker são projetados para serem temporários e facilmente reutilizáveis. 
+Isso significa que é possível pausar um container e reiniciá-lo mais tarde, 
+sem perder os dados ou as configurações que estão dentro dele.
+
+Os comandos que podemos usar primeiramente é o docker ps -a, para listar todos os containers
+incluidos os que estão parados. Posteriormente, a partir dessa listagem verifique o container
+que quer utilizar e salve o nome ou id. Com isso, dê o comando docker start <id ou nome>.

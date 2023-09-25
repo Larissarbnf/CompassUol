@@ -1,0 +1,7 @@
+Para construir a imagem Docker usei o comando:
+ 
+docker build -t canguru-app .
+
+E para executar o container a partir da imagem criada:
+
+docker run carguru-app
