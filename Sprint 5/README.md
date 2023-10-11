@@ -74,8 +74,8 @@ Em suma, a AWS fornece uma plataforma robusta de serviços em nuvem, com opçõe
 * DESAFIOS ENCONTRADOS AO DECORRER DESSA SPRINT:
 
 No contexto dos desafios que enfrentei, a maior dificuldade surgiu durante o Game, especificamente na tentativa de completar a primeira fase para criar o bucket.
-Após essa etapa, ao tentar mover os arquivos, não consegui localizá-los. Para resolver essa questão, busquei a orientação da monitora e discuti o problema com meus colegas de Squad. Foi então que encontrei uma solução viável: criei uma conta na AWS Skill Builder utilizando meu e-mail pessoal, já que o curso era gratuito. Nesse momento, fui bem-sucedido e consegui avançar até a segunda fase.
-No entanto, ao chegar à terceira fase, deparei-me com novos desafios que infelizmente não fui capaz de superar, mas o problema encontrado foi em relação a plataforma.
+Após essa etapa, ao tentar mover os arquivos, não consegui localizá-los. Para resolver essa questão, busquei a orientação da monitora e discuti o problema com meus colegas de Squad. Foi então que encontrei uma solução viável: criei uma conta na AWS Skill Builder utilizando meu e-mail pessoal, já que o curso era gratuito. Nesse momento, fui bem-sucedido e consegui avançar.
+No entanto, ao chegar à quinta fase, deparei-me com novos desafios que estou tentando sanar, mas o problema encontrado foi em relação a plataforma.
 
 ## 📦 Envios:
 * Certificados;
