@@ -1,0 +1,29 @@
+docker pull jupyter/all-spark-notebook
+docker run -it -p 8888:8888 jupyter/all-spark-notebook
+ http://74f4cfa40cab:8888/lab?token=d8200febe974519e54be7d0fd9ce0b550e71d2072f4cc649
+        http://127.0.0.1:8888/lab?token=d8200febe974519e54be7d0fd9ce0b550e71d2072f4cc649
+ docker exec -it 74f4cfa40cab pyspark
+
+
+
+Exercicio: comandos Usando o Spark Shell, apresente a sequência de comandos Spark 
+necessários para contar a quantidade de ocorrências de 
+cada palavra contida no arquivo README.md de seu repositório git.
+Comandos utilizados:
+
+#Abrir o Spark Shell no terminal
+spark-shell
+
+#No Spark Shell, lendo o arquivo README.md:
+val linhas = sc.textFile("README.md")
+
+#Dividindo as linhas em palavras e contando a ocorrência de cada uma:
+val palavras = linhas.flatMap(_.split(" "))
+val contagemPalavras = palavras.map(palavra => (palavra, 1)).reduceByKey(_ + _)
+
+#Exibindo os resultados:
+contagemPalavras.collect().foreach(println)
+
+#para contar as palavras no total (Não era necessário)
+val totalPalavras = palavras.count()
+println(s"Total de palavras: $totalPalavras")
