@@ -1,0 +1,62 @@
+mport sys
+from awsglue.transforms import *
+from awsglue.utils import getResolvedOptions
+from pyspark.context import SparkContext
+from awsglue.context import GlueContext
+from awsglue.job import Job
+
+args = getResolvedOptions(sys.argv, ['JOB_NAME','S3_INPUT_PATH','S3_TARGET_PATH'])
+
+sc = SparkContext()
+glueContext = GlueContext(sc)
+spark = glueContext.spark_session
+job = Job(glueContext)
+job.init(args['JOB_NAME'], args)
+
+source_file = args['S3_INPUT_PATH']
+target_path = args['S3_TARGET_PATH']
+
+# Lendo o arquivo do S3
+df = glueContext.create_dynamic_frame.from_catalog(
+   database = "glue-lab-compass",
+   table_name = "nomes_csv",
+   transformation_ctx = "df"
+)
+
+# Convertendo para DataFrame Spark
+spark_df = df.toDF()
+
+# Imprimindo o schema
+spark_df.printSchema()
+
+# Alterando a caixa dos valores da coluna "nome" para maiúsculo
+from pyspark.sql.functions import upper
+spark_df = spark_df.withColumn("nome", upper(spark_df["nome"]))
+
+# Exemplo de contagem de registros
+print("Contagem de linhas:", spark_df.count())
+
+# Exemplo de agrupamento
+spark_df.groupBy("ano", "sexo").count().show()
+
+# Ordenando os dados pelo ano (mais recente primeiro)
+spark_df = spark_df.orderBy("ano", ascending=False)
+
+# Encontrando o nome feminino com mais registros e em que ano ocorreu
+top_nome_feminino = spark_df.filter(spark_df["sexo"] == "F").groupBy("ano", "nome").count().orderBy("count", ascending=False).first()
+print(f"Nome feminino com mais registros: {top_nome_feminino['nome']}, Ano: {top_nome_feminino['ano']}")
+
+# Encontrando o nome masculino com mais registros e em que ano ocorreu
+top_nome_masculino = spark_df.filter(spark_df["sexo"] == "M").groupBy("ano", "nome").count().orderBy("count", ascending=False).first()
+print(f"Nome masculino com mais registros: {top_nome_masculino['nome']}, Ano: {top_nome_masculino['ano']}")
+
+# Total de registros (masculinos e femininos) por ano
+spark_df.groupBy("ano", "sexo").count().show()
+
+# Primeiras 10 linhas, ordenadas pelo ano
+spark_df.limit(10).show()
+
+# Escrevendo o conteúdo no S3 em JSON com particionamento por sexo e ano
+spark_df.write.partitionBy("sexo", "ano").json(target_path)
+
+job.commit()

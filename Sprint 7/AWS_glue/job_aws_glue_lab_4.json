@@ -1,0 +1,50 @@
+{
+	"jobConfig": {
+		"name": "job_aws_glue_lab_4",
+		"description": "",
+		"role": "arn:aws:iam::361851100539:role/AWSGlueServiceRole-Lab4",
+		"command": "glueetl",
+		"version": "3.0",
+		"runtime": null,
+		"workerType": "G.1X",
+		"numberOfWorkers": 2,
+		"maxCapacity": 2,
+		"maxRetries": 0,
+		"timeout": 5,
+		"maxConcurrentRuns": 1,
+		"security": "none",
+		"scriptName": "job_aws_glue_lab_4.py",
+		"scriptLocation": "s3://aws-glue-assets-361851100539-us-east-1/scripts/",
+		"language": "python-3",
+		"spark": false,
+		"sparkConfiguration": "standard",
+		"jobParameters": [
+			{
+				"key": "--S3_INPUT_PATH",
+				"value": "s3://aws-glue-compass/nomes.csv",
+				"existing": false
+			},
+			{
+				"key": "--S3_TARGET_PATH",
+				"value": "s3://aws-glue-compass/dados-transformados-novo/",
+				"existing": false
+			}
+		],
+		"tags": [],
+		"jobMode": "DEVELOPER_MODE",
+		"createdOn": "2023-11-03T20:16:28.674Z",
+		"developerMode": true,
+		"connectionsList": [],
+		"temporaryDirectory": "s3://aws-glue-assets-361851100539-us-east-1/temporary/",
+		"logging": true,
+		"glueHiveMetastore": true,
+		"etlAutoTuning": true,
+		"metrics": true,
+		"bookmark": "job-bookmark-disable",
+		"sparkPath": "s3://aws-glue-assets-361851100539-us-east-1/sparkHistoryLogs/",
+		"flexExecution": false,
+		"minFlexWorkers": null
+	},
+	"hasBeenSaved": false,
+	"script": "import sys\r\nfrom awsglue.transforms import *\r\nfrom awsglue.utils import getResolvedOptions\r\nfrom pyspark.context import SparkContext\r\nfrom awsglue.context import GlueContext\r\nfrom awsglue.job import Job\r\n\r\nargs = getResolvedOptions(sys.argv, ['JOB_NAME','S3_INPUT_PATH','S3_TARGET_PATH'])\r\n\r\nsc = SparkContext()\r\nglueContext = GlueContext(sc)\r\nspark = glueContext.spark_session\r\njob = Job(glueContext)\r\njob.init(args['JOB_NAME'], args)\r\n\r\nsource_file = args['S3_INPUT_PATH']\r\ntarget_path = args['S3_TARGET_PATH']\r\n\r\n# Lendo o arquivo do S3\r\ndf = glueContext.create_dynamic_frame.from_catalog(\r\n   database = \"glue-lab-compass\",\r\n   table_name = \"nomes_csv\",\r\n   transformation_ctx = \"df\"\r\n)\r\n\r\n# Convertendo para DataFrame Spark\r\nspark_df = df.toDF()\r\n\r\n# Imprimindo o schema\r\nspark_df.printSchema()\r\n\r\n# Alterando a caixa dos valores da coluna \"nome\" para maiúsculo\r\nfrom pyspark.sql.functions import upper\r\nspark_df = spark_df.withColumn(\"nome\", upper(spark_df[\"nome\"]))\r\n\r\n# Exemplo de contagem de registros\r\nprint(\"Contagem de linhas:\", spark_df.count())\r\n\r\n# Exemplo de agrupamento\r\nspark_df.groupBy(\"ano\", \"sexo\").count().show()\r\n\r\n# Ordenando os dados pelo ano (mais recente primeiro)\r\nspark_df = spark_df.orderBy(\"ano\", ascending=False)\r\n\r\n# Encontrando o nome feminino com mais registros e em que ano ocorreu\r\ntop_nome_feminino = spark_df.filter(spark_df[\"sexo\"] == \"F\").groupBy(\"ano\", \"nome\").count().orderBy(\"count\", ascending=False).first()\r\nprint(f\"Nome feminino com mais registros: {top_nome_feminino['nome']}, Ano: {top_nome_feminino['ano']}\")\r\n\r\n# Encontrando o nome masculino com mais registros e em que ano ocorreu\r\ntop_nome_masculino = spark_df.filter(spark_df[\"sexo\"] == \"M\").groupBy(\"ano\", \"nome\").count().orderBy(\"count\", ascending=False).first()\r\nprint(f\"Nome masculino com mais registros: {top_nome_masculino['nome']}, Ano: {top_nome_masculino['ano']}\")\r\n\r\n# Total de registros (masculinos e femininos) por ano\r\nspark_df.groupBy(\"ano\", \"sexo\").count().show()\r\n\r\n# Primeiras 10 linhas, ordenadas pelo ano\r\nspark_df.limit(10).show()\r\n\r\n# Escrevendo o conteúdo no S3 em JSON com particionamento por sexo e ano\r\nspark_df.write.partitionBy(\"sexo\", \"ano\").json(target_path)\r\n\r\njob.commit()\r\n"
+}
