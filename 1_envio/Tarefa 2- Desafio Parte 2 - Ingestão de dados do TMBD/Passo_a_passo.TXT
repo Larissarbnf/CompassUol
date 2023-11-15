@@ -1,6 +1,0 @@
-1º Fiz a análise de quais dados iria trabalhar, para que os dados fossem satisfatório
-2º Comecei a fazer o script e testei no VSCode antes de fazer na layer ( já com id do imdb)
-3º Criei a Layer, testei meu código e vi que precisava de permissões para poder usar o pandas e requests
-4º criei politicas, para permissões na role.
-5º Testei meu código novamente, subindo para o s3
-6º Verifiquei meu bucket do s3.
