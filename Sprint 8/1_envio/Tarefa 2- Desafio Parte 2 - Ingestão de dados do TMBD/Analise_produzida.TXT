@@ -1,0 +1,2 @@
+A minha análise vai ser dos filmes de romance da plataforma HBO do decorrente ano (2023).
+O total de páginas resultado na API (TMDB) foi de 87.
