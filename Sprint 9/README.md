@@ -46,3 +46,4 @@ Isso permite associar cada locação a um vendedor específico, garantindo a val
 A chave estrangeira idCombustivel em Carro está relacionada à tabela Combustivel. Isso é útil para indicar o tipo de combustível que um determinado carro utiliza. Essa relação garante que a referência ao tipo de combustível seja válida e consistente.
 
 # Diagrama feito com o DBeaver:
+ ![Diagrama](https://github.com/Larissarbnf/CompassUol/blob/main/Sprint%209/Exercicios/Diagrama1.png)
