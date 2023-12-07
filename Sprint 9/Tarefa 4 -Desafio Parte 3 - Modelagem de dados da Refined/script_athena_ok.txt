@@ -1,0 +1,74 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS tabela (
+	adult BOOLEAN,
+	backdrop_path STRING,
+	genre_ids ARRAY < INT >,
+	id INT,
+	original_language STRING,
+	original_title STRING,
+	overview STRING,
+	popularity DOUBLE,
+	poster_path STRING,
+	release_date STRING,
+	title STRING,
+	video BOOLEAN,
+	vote_average DOUBLE,
+	vote_count INT,
+	imdb_id STRING
+)
+STORED AS PARQUET
+LOCATION 's3://desafio-etl-1-compass/Trusted/';
+
+CREATE EXTERNAL TABLE IF NOT EXISTS Refined.Fato_Filmes (
+  filme_id INT,
+  popularidade DOUBLE,
+  vote_average DOUBLE,
+  vote_count INT
+)
+STORED AS PARQUET
+LOCATION 's3://desafio-etl-1-compass/Trusted/';
+
+CREATE EXTERNAL TABLE IF NOT EXISTS Refined.Dim_Filmes (
+  filme_id INT,
+  title STRING,
+  original_language STRING,
+  release_date STRING,
+  video BOOLEAN,
+  imdb_id STRING
+)
+STORED AS PARQUET
+LOCATION 's3://desafio-etl-1-compass/Trusted/';
+
+CREATE EXTERNAL TABLE IF NOT EXISTS Refined.Dim_Data (
+  data_id INT,
+  ano INT,
+  mes INT,
+  dia INT
+)
+STORED AS PARQUET
+LOCATION 's3://desafio-etl-1-compass/Trusted/';
+
+INSERT INTO Refined.Fato_Filmes
+SELECT
+  id AS filme_id,
+  popularity,
+  vote_average,
+  vote_count
+FROM tabela;
+
+INSERT INTO Refined.Dim_Filmes
+SELECT
+  id AS filme_id,
+  title,
+  original_language,
+  release_date,
+  video,
+  imdb_id
+FROM tabela;
+
+INSERT INTO Refined.Dim_Data (data_id, ano, mes, dia)
+SELECT
+  id AS data_id,
+  year(CAST(release_date AS TIMESTAMP)) AS ano,
+  month(CAST(release_date AS TIMESTAMP)) AS mes,
+  day(CAST(release_date AS TIMESTAMP)) AS dia
+FROM tabela;

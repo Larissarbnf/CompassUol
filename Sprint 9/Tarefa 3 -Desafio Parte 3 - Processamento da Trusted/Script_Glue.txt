@@ -1,0 +1,41 @@
+import sys
+from awsglue.utils import getResolvedOptions
+from awsglue.context import GlueContext
+from awsglue.job import Job
+from pyspark.context import SparkContext
+from pyspark.sql.functions import col
+from pyspark.sql.types import StructType, StructField, StringType, BooleanType, IntegerType, DoubleType, ArrayType
+
+
+args = getResolvedOptions(sys.argv, ['JOB_NAME', 'S3_INPUT_PATH', 'S3_TARGET_PATH'])
+
+sc = SparkContext()
+glueContext = GlueContext(sc)
+spark = glueContext.spark_session
+job = Job(glueContext)
+job.init(args['JOB_NAME'], args)
+
+json_schema = StructType([
+    StructField("adult", BooleanType(), True),
+    StructField("backdrop_path", StringType(), True),
+    StructField("genre_ids", ArrayType(IntegerType()), True),
+    StructField("id", IntegerType(), True),
+    StructField("original_language", StringType(), True),
+    StructField("original_title", StringType(), True),
+    StructField("overview", StringType(), True),
+    StructField("popularity", DoubleType(), True),
+    StructField("poster_path", StringType(), True),
+    StructField("release_date", StringType(), True),
+    StructField("title", StringType(), True),
+    StructField("video", BooleanType(), True),
+    StructField("vote_average", DoubleType(), True),
+    StructField("vote_count", IntegerType(), True),
+    StructField("imdb_id", StringType(), True)
+])
+
+json_df = spark.read.schema(json_schema).json(f"{args['S3_INPUT_PATH']}/*")
+
+# Salvando em formato Parquet
+json_df.write.parquet(args['S3_TARGET_PATH'], mode="overwrite")
+
+job.commit()

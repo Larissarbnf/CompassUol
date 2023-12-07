@@ -1,0 +1,28 @@
+from pyspark.context import SparkContext
+from awsglue.context import GlueContext
+from awsglue.job import Job
+
+sc = SparkContext()
+glueContext = GlueContext(sc)
+spark = glueContext.spark_session
+job = Job(glueContext)
+job.init("seu_job")
+
+trusted_path = "s3://desafio-etl-1-compass/Trusted/"
+refined_path = "s3://desafio-etl-1-compass/Refined/"
+
+df_trusted = spark.read.parquet(trusted_path)
+
+# Minhas colunas desejadas
+selected_columns = [
+    "id", "original_language", "original_title", "popularity",
+    "release_date", "title", "vote_average", "vote_count", "imdb_id"
+]
+df_transformed = df_trusted.select(*selected_columns)
+
+df_transformed.write.parquet(refined_path, mode="overwrite")
+
+# tabela no AWS Glue Data Catalog
+glueContext.create_dynamic_frame.from_catalog(frame=df_transformed, database="bancodedados", table_name="tabela")
+
+job.commit()
