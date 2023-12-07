@@ -45,5 +45,20 @@ Isso permite associar cada locação a um vendedor específico, garantindo a val
 
 A chave estrangeira idCombustivel em Carro está relacionada à tabela Combustivel. Isso é útil para indicar o tipo de combustível que um determinado carro utiliza. Essa relação garante que a referência ao tipo de combustível seja válida e consistente.
 
-# Diagrama feito com o DBeaver:
+## <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/DBeaver_logo.png" width="25"> Diagrama feito com o DBeaver:
  ![Diagrama](https://github.com/Larissarbnf/CompassUol/blob/main/Sprint%209/Exercicios/Diagrama1.png)
+
+
+ # Abordando o desafio da AWS
+ 
+ #### Na tarefa 3:
+ tranformei os dados que estavam na minha Raw (json) em parquet para minha Trusted. Aqui no repositório encontra o meu script e algumas imagens onde 
+ fiz meu script no Job da Aws glue onde foi configurada conforme explicado na Udemy.
+ todos os detalhes pude fazer prints da tela para que fique intuitivo o que fiz.
+
+ #### Na tarefa 4:
+ Fiz a modelagem de dados pelo Athena (onde criei minha Fato e dimensões dos dados que quero trabalhar), que são as avaliações do romance
+ do ano de 2023. Aqui no repósitorio encontra-se também as imagens do meu bucket, e outras imagens.
+
+ #### Na tarefa 5:
+ refinei meus dados da Trusted (parquet), e coloquei somente as colunas que irão satisfazer a meu projeto de conclusão, que já citei na tarefa 4.
