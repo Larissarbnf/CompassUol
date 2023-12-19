@@ -16,3 +16,5 @@ Ao longo da análise, conseguim responder parcialmente a essas perguntas, concen
 comédias românticas, na popularidade desses filmes e na média de votação.
 
 
+https://github.com/Larissarbnf/CompassUol/blob/main/Sprint%2010/Dashboard_final.jpg
+
